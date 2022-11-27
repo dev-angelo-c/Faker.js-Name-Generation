@@ -1,0 +1,13 @@
+export function arrayOfRandomCharaters(strLen = 20, arrLen = 10) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  let str = "";
+  while (str.length < strLen) {
+    str = str + alphabet[Math.floor(Math.random() * alphabet.length)]
+  }
+  let x = [];
+  while (x.length < arrLen) {
+    x.push(generateRandomLetter())
+  }
+
+  return str;
+}
