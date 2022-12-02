@@ -16,6 +16,16 @@ function randChar(strLen = 20, arrLen = 10, useSpecialChar=false){
   return randStrings;
 }
 
-let x = randChar(20, 5);
 
-console.log("X: ", x);
+//Ex Data Structure is [ [{htmlElement},{},{}], [{},{},{}] ]
+function nestedArrayToObject(z){
+  let fine = z.reduce( (acc, val) => {
+    let temp = {};
+    val.forEach( ( j, idx ) => {
+        temp[idx] = j.innerText;
+    });
+    acc.push(temp);
+      return acc;
+  }, [] )
+  return fine;
+}
