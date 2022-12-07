@@ -29,3 +29,64 @@ function nestedArrayToObject(z){
   }, [] )
   return fine;
 }
+
+
+// Sort and count words
+class WordGames{
+	constructor(delimiter = " "){
+		this.textCountHash = {};
+		this.sortedResults = [];
+		this.properNouns = [];
+		this.excludeCommonWords = ['the', 'they', 'them', 'and', 'is', 'a', 'of', 'for', 'was', 'as', 'to', 'from', 'at', 'are', 'its', 'with', 'that', 'it', 'has', 'be', 'been'];
+		this.delimiter = delimiter;
+  }
+
+	countWords( input ){
+		console.log("counting started");
+		
+		this.textCountHash = input.innerText.split(this.delimiter).reduce( (acc, val, idx) => {  	
+			
+			if(!this.excludeCommonWords.includes(val)){			
+
+				acc[val]
+				? acc[val]++ 
+				: Object.assign(acc, { [val.replace(/([^A-z])/, '')] : 1 })	
+
+			
+			}							
+			return acc				
+		}, {});
+	
+		console.log("counting complete");	
+		
+		console.log( this.textCountHash );
+		
+		return this;
+	}
+
+	sortResults() {
+		console.log( "sorting results!" )
+		this.sortedResults = Object.entries(this.textCountHash).sort( (a, b) => {
+			return  b[1] - a[1];
+		})		
+		return this;
+	}
+	
+	findProperNouns() {
+		
+		this.properNouns = Object.entries(this.textCountHash).map( ( i ) => {
+			if( i[0].charAt(0).search(/A-Z/) ) {
+				return i;
+			}
+		})
+		return this;		
+	}
+	
+	printResults( limit = 10){
+		console.log(" SORTED RESULTS ");
+		for(let i = 0; i < limit; i++){			
+			console.log( this.sortedResults[i] );
+		}
+	}
+}
+
