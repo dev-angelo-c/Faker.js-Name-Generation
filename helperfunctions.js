@@ -90,3 +90,32 @@ class WordGames{
 	}
 }
 
+
+
+// Copy the text from one field and paste it into another element.
+// Assumes that date and subtitle elements contain similar row heights.
+// Limited use I suppose but fun. 
+// Possible ways to improve include:
+// using a mouse as the selector
+// highlighting the selected and allowing the user to 
+// zoom in or out. parents/children elements. 
+function copyFrom(){
+  // enable mouse element selection.
+  // open popup that indicates you're capturing for the selector application.
+  // warn about possible failures. mitigate their impact. 
+  let from = $$(".classNameFrom"); // $$ === document.querySelectorAll('.date')
+  let moveTo = $$(".subtitle"); // $$ === document.querySelectorAll('.date')
+  
+  if( ( moveTo.length - from.length < 3) &&  ( moveTo.length - from.length > -3) ) {
+    console.log(" Within bounds of tolerance limits")
+  }else{
+    console.log("!!! OUT OF BOUNDS, YOU MAY NOT LIKE THE RESULTS YOU SEE ")
+  }
+
+  moveTo.forEach( (i, idx) => {
+    let x = document.createElement('span');
+    x.innerText = Array.from(from)[idx].innerText;
+
+    i.appendChild(x);
+  })
+}
