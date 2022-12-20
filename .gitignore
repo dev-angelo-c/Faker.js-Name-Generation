@@ -2,3 +2,6 @@ node_modules
 fakerhelper.js
 index.js
 package.json
+
+*.\server\*
+C:\Users\Jetta\Development\basic-site
